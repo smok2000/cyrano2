@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Citations Inspirantes - Explorez la poésie et le théâtre</title>
+    <title>Redécouvrir Cyrano de Bergerac</title>
     <style>
         /* Design général */
         body {
@@ -16,7 +16,7 @@
         }
 
         header {
-            background-color: #6C5B7B;
+            background-color: #800020; /* Bordeaux élégant */
             color: white;
             padding: 40px 20px;
             font-size: 2.5em;
@@ -120,7 +120,7 @@
 <body>
 
 <header>
-    Citations Inspirantes
+    Redécouvrir Cyrano de Bergerac
 </header>
 
 <div class="container">
@@ -130,7 +130,7 @@
     </div>
 
     <div class="quote-box" id="quote-box">
-        <p id="quote-text">Bienvenue, entrez votre nom et laissez-vous guider par la poésie et le théâtre.</p>
+        <p id="quote-text">Bienvenue, entrez votre nom et laissez-vous guider par l'esprit de Cyrano de Bergerac.</p>
         <p class="quote-author" id="quote-author"></p>
     </div>
 
@@ -140,22 +140,24 @@
 </div>
 
 <footer>
-    <p>&copy; 2025 Citations Inspirantes - Tous droits réservés</p>
+    <p>&copy; 2025 Redécouvrir Cyrano de Bergerac - Tous droits réservés</p>
 </footer>
 
 <script>
-    // Tableau de citations
+    // Tableau de citations de Cyrano de Bergerac
     const quotes = [
-        { text: "Mais… chanter Rêver, rire, passer, être seul, être libre...", author: "Cyrano de Bergerac" },
-        { text: "Un baiser, mais à tout prendre, qu'est-ce ? Un serment fait d'un peu plus près, une promesse...", author: "Cyrano de Bergerac" },
-        { text: "Il y a beaucoup de gens dont la facilité de parler ne vient que de l'impuissance de se taire.", author: "Molière" },
-        { text: "Travailler sans souci de gloire ou de fortune, À tel voyage, auquel on pense, dans la lune !", author: "Cyrano de Bergerac" },
-        { text: "Les rêves ne sont que la poésie de l'âme.", author: "Paul Éluard" },
-        { text: "Je suis une ombre, et vous qu'une clarté !", author: "Cyrano de Bergerac" },
-        { text: "Les mots sont les vêtements du silence.", author: "Victor Hugo" },
-        { text: "Ah ! non, cela, jamais ! Non, ce serait trop laid, Si le long de ce nez une larme coulait !", author: "Cyrano de Bergerac" },
-        { text: "La poésie, c'est la vérité qui se cache derrière la beauté.", author: "Rimbaud" },
-        { text: "L'amour est un secret qui prend la bouche pour oreille, Un instant d'infini qui fait un bruit d'abeille.", author: "Cyrano de Bergerac" }
+        { text: "Mais… chanter, Rêver, rire, passer, être seul, être libre...", author: "Cyrano de Bergerac" },
+        { text: "Un baiser, mais à tout prendre, qu'est-ce? Un serment fait d'un peu plus près, une promesse...", author: "Cyrano de Bergerac" },
+        { text: "Il y a beaucoup de gens dont la facilité de parler ne vient que de l'impuissance de se taire.", author: "Cyrano de Bergerac" },
+        { text: "Sois satisfait des fleurs, des fruits, même des feuilles, Si c'est dans ton jardin à toi que tu les cueilles !", author: "Cyrano de Bergerac" },
+        { text: "Ne le plaignez pas trop : il a vécu sans pactes, Libre dans sa pensée autant que dans ses actes.", author: "Cyrano de Bergerac" },
+        { text: "Mais on ne se bat pas dans l'espoir du succès ! Non, non c'est bien plus beau lorsque c'est inutile !", author: "Cyrano de Bergerac" },
+        { text: "La lune, dans le ciel, luisait comme une montre, Quand soudain, je ne sais quel soigneux horloger...", author: "Cyrano de Bergerac" },
+        { text: "Le Bret : Eh ! mon Dieu, quelle est donc cette femme ? Cyrano : Un danger Mortel sans le vouloir, exquis sans y songer...", author: "Cyrano de Bergerac" },
+        { text: "Baiser. Le mot est doux ! Je ne vois pas pourquoi votre lèvre ne l’ose...", author: "Cyrano de Bergerac" },
+        { text: "Christian : Las ! je suis sot à m'en tuer de honte ! Cyrano : Mais non, tu ne l'es pas puisque tu t'en rends compte.", author: "Cyrano de Bergerac" },
+        { text: "C'est la nuit qu'il est beau de croire à la lumière.", author: "Cyrano de Bergerac" },
+        { text: "Mais l’œuvre est à toi, l’œuvre est à nous, vivons-là plutôt que de la redécouvrir", author: "" }
     ];
 
     const startButton = document.getElementById('start-button');
@@ -170,13 +172,11 @@
         return quotes[Math.floor(Math.random() * quotes.length)];
     }
 
-    // Fonction de personnalisation des citations
+    // Fonction de personnalisation des citations selon le nom
     function personalizeQuote(name) {
-        if (name.toLowerCase().includes('a')) {
-            return { text: "Un baiser... un secret bien gardé. - Cyrano de Bergerac", author: "" };
-        }
-        if (name.toLowerCase().includes('z')) {
-            return { text: "La poésie, c'est la vérité qui se cache derrière la beauté. - Rimbaud", author: "Rimbaud" };
+        const lowerName = name.toLowerCase();
+        if (lowerName === "roxane" || lowerName === "cyrano" || lowerName === "christian") {
+            return { text: "Mais l’œuvre est à toi, l’œuvre est à nous, vivons-là plutôt que de la redécouvrir", author: "" };
         }
         return getRandomQuote();
     }
