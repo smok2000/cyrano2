@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Citations Aléatoires de Théâtre et de Poésie</title>
+    <title>Citations Inspirantes - Explorez la poésie et le théâtre</title>
     <style>
+        /* Design général */
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #f3f4f6, #e6eff9);
+            background: linear-gradient(135deg, #B9E5F7, #F8D2B3);
             color: #333;
             margin: 0;
             padding: 0;
@@ -15,11 +16,14 @@
         }
 
         header {
-            background-color: #4A90E2;
+            background-color: #6C5B7B;
             color: white;
-            padding: 20px;
-            font-size: 2em;
+            padding: 40px 20px;
+            font-size: 2.5em;
             font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 4px solid #fff;
         }
 
         .container {
@@ -27,64 +31,85 @@
             text-align: center;
         }
 
+        /* Ajout d'un formulaire pour le nom */
+        .form-container {
+            margin-bottom: 30px;
+        }
+
+        .input-name {
+            padding: 10px;
+            font-size: 1.2em;
+            width: 80%;
+            max-width: 300px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        /* Design de la boîte de citation */
         .quote-box {
             background-color: white;
-            border-radius: 8px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            margin: 30px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin: 30px auto;
             font-size: 1.3em;
             font-style: italic;
             max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
             min-height: 150px;
             position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .quote-box:hover {
+            transform: scale(1.05);
         }
 
         .quote-box::before {
             content: '"';
-            font-size: 4em;
-            color: #4A90E2;
+            font-size: 5em;
+            color: #F8AFA6;
             position: absolute;
-            top: -20px;
-            left: -30px;
+            top: -30px;
+            left: -50px;
         }
 
         .quote-author {
             font-weight: bold;
             margin-top: 20px;
-            font-size: 1.1em;
+            font-size: 1.2em;
         }
 
+        /* Design du bouton */
         .button {
-            background-color: #4A90E2;
+            background-color: #FF6F61;
             color: white;
-            padding: 15px 30px;
+            padding: 15px 40px;
             font-size: 1.1em;
-            border-radius: 8px;
+            border-radius: 10px;
             border: none;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .button:hover {
-            background-color: #357ABD;
+            background-color: #E35B4E;
         }
 
         .button:active {
-            background-color: #2A6F9A;
+            background-color: #C8483F;
         }
 
         .illustration {
-            width: 200px;
-            margin-top: 20px;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            margin-top: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
 
         footer {
-            background-color: #f1f1f1;
+            background-color: #F1F1F1;
             padding: 20px;
             font-size: 0.9em;
             color: #888;
@@ -95,18 +120,23 @@
 <body>
 
 <header>
-    <p>Citations Aléatoires de Théâtre et de Poésie</p>
+    Citations Inspirantes
 </header>
 
 <div class="container">
+    <div class="form-container">
+        <input class="input-name" id="name-input" type="text" placeholder="Entrez votre nom..." />
+        <button class="button" id="start-button">Lancer la magie</button>
+    </div>
+
     <div class="quote-box" id="quote-box">
-        <p id="quote-text">Cliquez sur le bouton ci-dessous pour découvrir une citation inspirante !</p>
+        <p id="quote-text">Bienvenue, entrez votre nom et laissez-vous guider par la poésie et le théâtre.</p>
         <p class="quote-author" id="quote-author"></p>
     </div>
 
-    <button class="button" id="quote-button">Générer une citation</button>
+    <button class="button" id="quote-button" style="display: none;">Générer une citation</button>
 
-    <img class="illustration" src="https://via.placeholder.com/200" alt="Illustration poétique">
+    <img class="illustration" src="https://via.placeholder.com/250" alt="Illustration poétique">
 </div>
 
 <footer>
@@ -114,6 +144,7 @@
 </footer>
 
 <script>
+    // Tableau de citations (plus varié)
     const quotes = [
         { text: "Mais… chanter Rêver, rire, passer, être seul, être libre...", author: "Cyrano de Bergerac" },
         { text: "Un baiser, mais à tout prendre, qu'est-ce ? Un serment fait d'un peu plus près, une promesse...", author: "Cyrano de Bergerac" },
@@ -127,25 +158,49 @@
         { text: "L'amour est un secret qui prend la bouche pour oreille, Un instant d'infini qui fait un bruit d'abeille.", author: "Cyrano de Bergerac" }
     ];
 
-    const button = document.getElementById('quote-button');
+    const startButton = document.getElementById('start-button');
+    const quoteButton = document.getElementById('quote-button');
     const quoteBox = document.getElementById('quote-box');
     const quoteText = document.getElementById('quote-text');
     const quoteAuthor = document.getElementById('quote-author');
+    const nameInput = document.getElementById('name-input');
 
-    button.addEventListener('click', () => {
-        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    // Fonction qui choisit une citation aléatoire
+    function getRandomQuote() {
+        return quotes[Math.floor(Math.random() * quotes.length)];
+    }
 
+    // Fonction de personnalisation des citations
+    function personalizeQuote(name) {
+        if (name.toLowerCase().includes('a')) {
+            return "Un baiser... un secret bien gardé. - Cyrano de Bergerac";
+        }
+        if (name.toLowerCase().includes('z')) {
+            return "La poésie, c'est la vérité qui se cache derrière la beauté. - Rimbaud";
+        }
+        return getRandomQuote();
+    }
+
+    // Affichage d'une citation personnalisée après le clic
+    startButton.addEventListener('click', () => {
+        const name = nameInput.value.trim();
+        if (name) {
+            const personalizedQuote = personalizeQuote(name);
+            quoteText.textContent = personalizedQuote.text || personalizedQuote;
+            quoteAuthor.textContent = personalizedQuote.author || "";
+            quoteButton.style.display = 'block';
+            nameInput.disabled = true;
+            startButton.style.display = 'none';
+        } else {
+            alert('Veuillez entrer votre nom pour commencer.');
+        }
+    });
+
+    // Affichage d'une citation aléatoire au clic du bouton
+    quoteButton.addEventListener('click', () => {
+        const randomQuote = getRandomQuote();
         quoteText.textContent = randomQuote.text;
         quoteAuthor.textContent = — ${randomQuote.author};
-
-        // Change button color based on the first letter of the quote
-        if (randomQuote.text[0].toLowerCase() === 'a') {
-            button.style.backgroundColor = 'green';
-        } else if (randomQuote.text[0].toLowerCase() === 'z') {
-            button.style.backgroundColor = 'red';
-        } else {
-            button.style.backgroundColor = '#4A90E2';
-        }
     });
 </script>
 
