@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citations Aléatoires de Théâtre et de Poésie</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f3f4f6, #e6eff9);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #4A90E2;
+            color: white;
+            padding: 20px;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 50px 10%;
+            text-align: center;
+        }
+
+        .quote-box {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 30px 0;
+            font-size: 1.3em;
+            font-style: italic;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: 150px;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4em;
+            color: #4A90E2;
+            position: absolute;
+            top: -20px;
+            left: -30px;
+        }
+
+        .quote-author {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .button {
+            background-color: #4A90E2;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #357ABD;
+        }
+
+        .button:active {
+            background-color: #2A6F9A;
+        }
+
+        .illustration {
+            width: 200px;
+            margin-top: 20px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            padding: 20px;
+            font-size: 0.9em;
+            color: #888;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <p>Citations Aléatoires de Théâtre et de Poésie</p>
+</header>
+
+<div class="container">
+    <div class="quote-box" id="quote-box">
+        <p id="quote-text">Cliquez sur le bouton ci-dessous pour découvrir une citation inspirante !</p>
+        <p class="quote-author" id="quote-author"></p>
+    </div>
+
+    <button class="button" id="quote-button">Générer une citation</button>
+
+    <img class="illustration" src="https://via.placeholder.com/200" alt="Illustration poétique">
+</div>
+
+<footer>
+    <p>&copy; 2025 Citations Inspirantes - Tous droits réservés</p>
+</footer>
+
+<script>
+    const quotes = [
+        { text: "Mais… chanter Rêver, rire, passer, être seul, être libre...", author: "Cyrano de Bergerac" },
+        { text: "Un baiser, mais à tout prendre, qu'est-ce ? Un serment fait d'un peu plus près, une promesse...", author: "Cyrano de Bergerac" },
+        { text: "Il y a beaucoup de gens dont la facilité de parler ne vient que de l'impuissance de se taire.", author: "Molière" },
+        { text: "Travailler sans souci de gloire ou de fortune, À tel voyage, auquel on pense, dans la lune !", author: "Cyrano de Bergerac" },
+        { text: "Les rêves ne sont que la poésie de l'âme.", author: "Paul Éluard" },
+        { text: "Je suis une ombre, et vous qu'une clarté !", author: "Cyrano de Bergerac" },
+        { text: "Les mots sont les vêtements du silence.", author: "Victor Hugo" },
+        { text: "Ah ! non, cela, jamais ! Non, ce serait trop laid, Si le long de ce nez une larme coulait !", author: "Cyrano de Bergerac" },
+        { text: "La poésie, c'est la vérité qui se cache derrière la beauté.", author: "Rimbaud" },
+        { text: "L'amour est un secret qui prend la bouche pour oreille, Un instant d'infini qui fait un bruit d'abeille.", author: "Cyrano de Bergerac" }
+    ];
+
+    const button = document.getElementById('quote-button');
+    const quoteBox = document.getElementById('quote-box');
+    const quoteText = document.getElementById('quote-text');
+    const quoteAuthor = document.getElementById('quote-author');
+
+    button.addEventListener('click', () => {
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+        quoteText.textContent = randomQuote.text;
+        quoteAuthor.textContent = — ${randomQuote.author};
+
+        // Change button color based on the first letter of the quote
+        if (randomQuote.text[0].toLowerCase() === 'a') {
+            button.style.backgroundColor = 'green';
+        } else if (randomQuote.text[0].toLowerCase() === 'z') {
+            button.style.backgroundColor = 'red';
+        } else {
+            button.style.backgroundColor = '#4A90E2';
+        }
+    });
+</script>
+
+</body>
+</html>
