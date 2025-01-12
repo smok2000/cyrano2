@@ -144,7 +144,7 @@
 </footer>
 
 <script>
-    // Tableau de citations (plus varié)
+    // Tableau de citations
     const quotes = [
         { text: "Mais… chanter Rêver, rire, passer, être seul, être libre...", author: "Cyrano de Bergerac" },
         { text: "Un baiser, mais à tout prendre, qu'est-ce ? Un serment fait d'un peu plus près, une promesse...", author: "Cyrano de Bergerac" },
@@ -173,10 +173,10 @@
     // Fonction de personnalisation des citations
     function personalizeQuote(name) {
         if (name.toLowerCase().includes('a')) {
-            return "Un baiser... un secret bien gardé. - Cyrano de Bergerac";
+            return { text: "Un baiser... un secret bien gardé. - Cyrano de Bergerac", author: "" };
         }
         if (name.toLowerCase().includes('z')) {
-            return "La poésie, c'est la vérité qui se cache derrière la beauté. - Rimbaud";
+            return { text: "La poésie, c'est la vérité qui se cache derrière la beauté. - Rimbaud", author: "Rimbaud" };
         }
         return getRandomQuote();
     }
@@ -186,7 +186,7 @@
         const name = nameInput.value.trim();
         if (name) {
             const personalizedQuote = personalizeQuote(name);
-            quoteText.textContent = personalizedQuote.text || personalizedQuote;
+            quoteText.textContent = personalizedQuote.text;
             quoteAuthor.textContent = personalizedQuote.author || "";
             quoteButton.style.display = 'block';
             nameInput.disabled = true;
@@ -200,7 +200,7 @@
     quoteButton.addEventListener('click', () => {
         const randomQuote = getRandomQuote();
         quoteText.textContent = randomQuote.text;
-        quoteAuthor.textContent = — ${randomQuote.author};
+        quoteAuthor.textContent = randomQuote.author;
     });
 </script>
 
